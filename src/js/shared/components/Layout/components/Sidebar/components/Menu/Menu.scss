@@ -1,0 +1,34 @@
+@import "scss/mixins";
+
+.menu {
+  &__item {
+    padding-bottom: $global-spacing-s;
+    position: relative;
+    cursor: pointer;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    @include p;
+    @include link($global-color-bg-light);
+
+    &::before {
+      content: "->";
+      color: $global-color-accent;
+      position: absolute;
+      transform: translateX(-100%);
+      left: -$global-spacing-s;
+      top: 0;
+      opacity: 0;
+
+      @include animate(opacity);
+    }
+
+    &_active {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+}

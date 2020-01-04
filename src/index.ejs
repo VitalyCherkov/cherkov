@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        <title>Виталий Черков</title>
+        <% for (var css in htmlWebpackPlugin.files.css) { %>
+            <link type="text/css" href="<%= htmlWebpackPlugin.files.css[css] %>"
+                  rel="stylesheet">
+        <% } %>
+        <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon %>?v=3" type="image/x-icon">
+    </head>
+    <body>
+        <div id="app"></div>
+        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+            <script type="text/javascript"
+                    src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+        <% } %>
+    </body>
+</html>

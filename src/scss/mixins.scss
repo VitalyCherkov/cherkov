@@ -1,0 +1,52 @@
+@import "variables";
+
+@mixin animate($property...) {
+  $transition-normal: 0.2s ease-out;
+  $animatedProperty: #{""};
+
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1 {
+      $animatedProperty: $animatedProperty nth($property, $i) $transition-normal #{", "};
+    }
+  }
+
+  transition: $animatedProperty nth($property, length($property)) $transition-normal;
+}
+
+@mixin h1 {
+  font-size: 36px;
+  line-height: 36px;
+  font-family: "Anonymous Pro", sans-serif;
+  font-weight: 700;
+}
+
+@mixin h2 {
+  font-size: 24px;
+  line-height: 24px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+@mixin p {
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+@mixin link($inactive-color: $global-color-accent, $hover-color: $global-color-bg-light) {
+  color: $inactive-color;
+  text-decoration: none;
+
+  @include animate(color);
+
+  &:hover {
+    text-decoration: underline;
+    color: $hover-color;
+  }
+}
+
+@mixin square($side) {
+  width: $side;
+  height: $side;
+}

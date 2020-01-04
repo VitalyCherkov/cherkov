@@ -1,0 +1,31 @@
+@import "scss/mixins";
+
+.languages-toggle {
+  margin: -#{$global-spacing-s / 2};
+
+  &__item {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin: $global-spacing-s / 2;
+    cursor: pointer;
+
+    @include square($global-spacing-l);
+    @include p;
+
+    line-height: $global-spacing-l;
+    text-align: center;
+    color: $global-color-bg-light;
+    border: 1px solid transparent;
+
+    @include animate(border);
+
+    &:hover {
+      border: 1px solid $global-color-accent;
+    }
+
+    &_active {
+      border: 1px solid $global-color-accent;
+    }
+  }
+}

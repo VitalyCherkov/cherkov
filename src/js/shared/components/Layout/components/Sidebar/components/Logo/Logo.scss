@@ -1,0 +1,15 @@
+@import "scss/mixins";
+
+.logo {
+  color: $global-color-bg-light;
+
+  &__chunk {
+    height: 50px;
+  }
+
+  &__subtitle {
+    margin-top: $global-spacing-m;
+
+    @include h2;
+  }
+}
