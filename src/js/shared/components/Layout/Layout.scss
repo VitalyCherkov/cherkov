@@ -26,3 +26,13 @@
     height: 100%;
   }
 }
+
+#LAYOUT_BACKGROUND_ID {
+  z-index: $global-z-index-background;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $global-color-bg-dark;
+
+  @include square(100%);
+}

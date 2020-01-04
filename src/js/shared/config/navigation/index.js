@@ -1,11 +1,10 @@
 // @flow
-
 import languages from 'shared/config/languages';
 
 export const navItemTypes = {
-  whoAmI: 'whoAmI',
-  academicExperience: 'academicExperience',
-  professionalExperience: 'professionalExperience'
+  whoAmI: 'who-am-i',
+  academicExperience: 'academic-experience',
+  professionalExperience: 'professional-experience'
 };
 
 export type NavItemType = $Values<typeof navItemTypes>;
@@ -28,19 +27,18 @@ const KEY_NAV_LABEL_ACADEMIC_EXPERIENCE = 'KEY_NAV_LABEL_ACADEMIC_EXPERIENCE';
 const KEY_NAV_LABEL_PROFESSIONAL_EXPERIENCE =
   'KEY_NAV_LABEL_PROFESSIONAL_EXPERIENCE';
 
-languages.manager
-  .setString(KEY_NAV_LABEL_WHO_AM_I, {
-    [languages.keys.ru]: 'Кто я такой',
-    [languages.keys.en]: 'Who am I'
-  })
-  .setString(KEY_NAV_LABEL_ACADEMIC_EXPERIENCE, {
-    [languages.keys.ru]: 'Академический опыт',
-    [languages.keys.en]: 'Academic experience'
-  })
-  .setString(KEY_NAV_LABEL_PROFESSIONAL_EXPERIENCE, {
-    [languages.keys.ru]: 'Профессиональный опыт',
-    [languages.keys.en]: 'Professional experience'
-  });
+languages.manager.setString(KEY_NAV_LABEL_WHO_AM_I, {
+  [languages.keys.ru]: 'Кто я такой',
+  [languages.keys.en]: 'Who am I'
+});
+languages.manager.setString(KEY_NAV_LABEL_ACADEMIC_EXPERIENCE, {
+  [languages.keys.ru]: 'Академический опыт',
+  [languages.keys.en]: 'Academic experience'
+});
+languages.manager.setString(KEY_NAV_LABEL_PROFESSIONAL_EXPERIENCE, {
+  [languages.keys.ru]: 'Профессиональный опыт',
+  [languages.keys.en]: 'Professional experience'
+});
 
 const entities: NavItemEntitiesMap = {
   [navItemTypes.whoAmI]: {
@@ -57,8 +55,10 @@ const entities: NavItemEntitiesMap = {
   }
 };
 
-export default {
+const navigation = {
   keys: navItemTypes,
   order,
   entities
 };
+
+export default navigation;

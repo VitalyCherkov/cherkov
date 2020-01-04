@@ -5,6 +5,7 @@
     padding-bottom: $global-spacing-s;
     position: relative;
     cursor: pointer;
+    display: block;
 
     &:last-child {
       padding-bottom: 0;

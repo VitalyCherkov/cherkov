@@ -11,6 +11,9 @@
     "@babel/preset-flow"
   ],
   "plugins": [
+    ["@babel/plugin-proposal-decorators", {
+      "legacy": true
+    }],
     [
       "react-css-modules",
       {

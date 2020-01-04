@@ -23,6 +23,8 @@
   &__logo {
     flex-shrink: 0;
     margin-bottom: $global-spacing-l;
+    display: block;
+    text-decoration: none;
   }
 
   &__menu {

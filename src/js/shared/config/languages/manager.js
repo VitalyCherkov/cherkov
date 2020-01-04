@@ -1,35 +1,29 @@
 // @flow
 
+import { action, observable } from 'mobx';
 import type { ILangManager, LangStringsValue, LangType } from './types';
 import { langTypes } from './types';
 
 class LangManager implements ILangManager {
-  _selectedLang: LangType = langTypes.en;
-  _dict: { [key: string]: LangStringsValue } = {};
-
-  setLanguage = (lang: LangType) => {
-    this._selectedLang = lang;
-  };
-
-  getLanguage = () => this._selectedLang;
+  @observable language: LangType = langTypes.en;
+  @observable _dict: { [key: string]: LangStringsValue } = {};
 
   getString = (key: string, lang: ?LangType): ?string => {
     const res = this._dict[key];
 
-    if (typeof res === 'object') {
-      const requiredLang = lang || this._selectedLang;
-      return res[requiredLang];
-    }
-
     if (typeof res === 'string') {
       return res;
     }
+
+    const requiredLang = lang || this.language;
+    return res ? res[requiredLang] : undefined;
   };
 
-  setString = (key: string, value: LangStringsValue): LangManager => {
+  @action
+  setString(key: string, value: LangStringsValue) {
     this._dict[key] = value;
     return this;
-  };
+  }
 }
 
 export default new LangManager();

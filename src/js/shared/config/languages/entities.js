@@ -7,7 +7,8 @@ import { langTypes } from './types';
 const KEY_LANG_RU_LABEL = 'KEY_LANG_RU_LABEL';
 const KEY_LANG_EN_LABEL = 'KEY_LANG_EN_LABEL';
 
-manager.setString(KEY_LANG_RU_LABEL, 'Ру').setString(KEY_LANG_EN_LABEL, 'En');
+manager.setString(KEY_LANG_RU_LABEL, 'Ру');
+manager.setString(KEY_LANG_EN_LABEL, 'En');
 
 const entities: LangEntitiesMap = {
   [langTypes.ru]: {

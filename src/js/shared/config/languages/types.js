@@ -21,10 +21,9 @@ export type LangEntity = {
 export type LangEntitiesMap = { [key: LangType]: LangEntity };
 
 export interface ILangManager {
-  setLanguage(lang: LangType): void;
-  getLanguage(): LangType;
+  language: LangType;
   getString(key: string, lang?: LangType): ?string;
-  setString(key: string, value: LangStringsValue): ILangManager;
+  setString(key: string, value: LangStringsValue): void;
 }
 
 export type PropsWithLang = {

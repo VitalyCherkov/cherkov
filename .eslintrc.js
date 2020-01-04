@@ -65,6 +65,6 @@ module.exports = {
         "config": path.resolve("./webpack.config.babel.js")
       }
     },
-    "import/internal-regex": "^(scss|shared|components|store|config)/"
+    "import/internal-regex": "^(scss|shared|components|store|config)"
   },
 };

@@ -13,6 +13,7 @@
     </head>
     <body>
         <div id="app"></div>
+        <div id="LAYOUT_BACKGROUND_ID"></div>
         <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
             <script type="text/javascript"
                     src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>

@@ -1,11 +1,12 @@
 // @flow
 
-import React from 'react';
-import languges, { langTypes } from 'shared/config/languages';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { BASE_ROUTE } from 'shared/config/routes';
+import LanguagesToggle from './components/LanguagesToggle';
 import Logo from './components/Logo';
 import Menu from './components/Menu';
 import './Sidebar.scss';
-import LanguagesToggle from './components/LanguagesToggle';
 
 const Sidebar = () => {
   return (
@@ -20,12 +21,11 @@ const Sidebar = () => {
       >
         <path d="M 395 0 h -395 v 700 h 80 Z" fill="currentColor" />
       </svg>
-      <Logo langManager={languges.manager} className="sidebar__logo" />
-      <Menu langManager={languges.manager} className="sidebar__menu" />
-      <LanguagesToggle
-        langManager={languges.manager}
-        className="sidebar__languages"
-      />
+      <Link to={BASE_ROUTE} className="sidebar__logo">
+        <Logo />
+      </Link>
+      <Menu className="sidebar__menu" />
+      <LanguagesToggle className="sidebar__languages" />
     </div>
   );
 };

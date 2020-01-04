@@ -1,23 +1,26 @@
 // @flow
 
 import cn from 'classnames';
+import { observer } from 'mobx-react';
 import * as React from 'react';
-import type { PropsWithLang } from 'shared/config/languages';
 import { langTypes } from 'shared/config/languages';
+import { useLangStore } from 'store';
 import './Logo.scss';
 
-type Props = PropsWithLang & {
+type Props = {
   className?: string
 };
 
-const Logo = ({ langManager, className }: Props) => {
+const Logo = observer(({ className }: Props) => {
+  const langStore = useLangStore();
+
   const nameChunks =
-    langManager.getLanguage() === langTypes.ru
+    langStore.language === langTypes.ru
       ? ['Виталий', 'Черков']
       : ['Vitaly', 'Cherkov'];
 
   const subtitleChunk =
-    langManager.getLanguage() === langTypes.ru
+    langStore.language === langTypes.ru
       ? 'Фронтенд-разработчик'
       : 'Frontend-developer';
 
@@ -53,6 +56,6 @@ const Logo = ({ langManager, className }: Props) => {
       <div className="logo__subtitle">{subtitleChunk}</div>
     </div>
   );
-};
+});
 
 export default Logo;

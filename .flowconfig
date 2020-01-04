@@ -8,10 +8,9 @@ module.file_ext=.json
 module.file_ext=.css
 module.file_ext=.scss
 
+
 module.name_mapper='^components' ->'<PROJECT_ROOT>/src/js/shared/components'
 module.name_mapper='^shared' ->'<PROJECT_ROOT>/src/js/shared'
 
 esproposal.optional_chaining=enable
-
-[libs]
-/type-def-libs
+esproposal.decorators=ignore
