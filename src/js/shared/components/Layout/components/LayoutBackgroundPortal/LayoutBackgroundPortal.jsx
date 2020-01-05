@@ -10,10 +10,8 @@ type Props = {
 };
 
 const LayoutBackgroundPortal = ({ children }: Props) => {
-  return ReactDOM.createPortal(
-    children,
-    document.getElementById(LAYOUT_BACKGROUND_ID)
-  );
+  const container = document.getElementById(LAYOUT_BACKGROUND_ID);
+  return container ? ReactDOM.createPortal(children || null, container) : null;
 };
 
 export default LayoutBackgroundPortal;

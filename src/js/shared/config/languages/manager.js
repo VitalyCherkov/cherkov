@@ -22,7 +22,6 @@ class LangManager implements ILangManager {
   @action
   setString(key: string, value: LangStringsValue) {
     this._dict[key] = value;
-    return this;
   }
 }
 

@@ -15,7 +15,7 @@ export type LangStringsValue =
 
 export type LangEntity = {
   key: LangType,
-  labelKey: LangStringsValue
+  labelKey: string
 };
 
 export type LangEntitiesMap = { [key: LangType]: LangEntity };

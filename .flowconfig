@@ -11,6 +11,7 @@ module.file_ext=.scss
 
 module.name_mapper='^components' ->'<PROJECT_ROOT>/src/js/shared/components'
 module.name_mapper='^shared' ->'<PROJECT_ROOT>/src/js/shared'
+module.name_mapper='^store' ->'<PROJECT_ROOT>/src/js/store'
 
 esproposal.optional_chaining=enable
 esproposal.decorators=ignore

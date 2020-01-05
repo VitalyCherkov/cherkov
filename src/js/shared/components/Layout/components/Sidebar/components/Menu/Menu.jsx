@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 import * as React from 'react';
 import { matchPath } from 'react-router';
 import { NavLink } from 'react-router-dom';
+import type { Location } from 'react-router-dom';
 import navigation from 'shared/config/navigation';
 import routes from 'shared/config/routes';
 import { useLangStore } from 'store';

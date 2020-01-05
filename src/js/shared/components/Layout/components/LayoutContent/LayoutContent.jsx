@@ -6,29 +6,32 @@ import { useParams } from 'react-router';
 import type { ILangManager } from 'shared/config/languages';
 import navigation from 'shared/config/navigation';
 import type { NavItem } from 'shared/config/navigation';
-import { useLangStore } from 'store/index';
+import { useLangStore } from 'store';
 import './LayoutContent.scss';
 
-const useTitle = (
-  langManager: ILangManager,
-  titleRef: React.Ref<HTMLSpanElement>
-) => {
-  const { nav_type: navType } = useParams();
+type SpanRef = {
+  current?: HTMLSpanElement | null
+};
 
-  const entity: NavItem = navigation.entities[navType];
+const useTitle = (langManager: ILangManager, titleRef: SpanRef) => {
+  const titleCur = titleRef.current;
 
-  const title = langManager.getString(entity.labelKey);
+  const { nav_type: navType = '' } = useParams();
+
+  const entity: NavItem = navigation.entities[navType || ''];
+
+  const title = langManager.getString(entity.labelKey) || '';
 
   const timerRef = React.useRef(null);
 
   const speedMS = 20;
 
-  const doWork = () => {
-    if (timerRef.current === null || titleRef.current === null) {
+  const doWork = React.useCallback(() => {
+    if (timerRef.current === null || !titleCur) {
       return;
     }
 
-    const realTitle = titleRef.current.innerText;
+    const realTitle = titleCur.innerText || '';
 
     if (realTitle.length === title.length) {
       clearTimeout(timerRef.current);
@@ -36,21 +39,19 @@ const useTitle = (
       return;
     }
 
-    titleRef.current.innerText = title.substr(0, realTitle.length + 1);
+    titleCur.innerText = title.substr(0, realTitle.length + 1);
 
     timerRef.current = setTimeout(doWork, speedMS);
-  };
+  }, [timerRef.current, titleRef]);
 
   React.useEffect(() => {
     clearTimeout(timerRef.current);
     timerRef.current = null;
 
-    if (titleRef.current === null) {
-      return;
+    if (titleCur) {
+      titleCur.innerText = '';
+      timerRef.current = setTimeout(doWork, speedMS);
     }
-
-    titleRef.current.innerText = '';
-    timerRef.current = setTimeout(doWork, speedMS);
   }, [title]);
 };
 
