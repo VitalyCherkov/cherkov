@@ -1,0 +1,7 @@
+@import "scss/mixins";
+
+$icon-side-size: 20px;
+
+.icon {
+  @include square($icon-side-size);
+}

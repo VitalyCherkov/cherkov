@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { LayoutBackgroundPortal } from 'components/Layout';
+import ContactsBlock from './components/ContactsBlock/ContactsBlock';
 
 const WhoAmI = () => {
   return (
@@ -17,7 +18,7 @@ const WhoAmI = () => {
           }}
         />
       </LayoutBackgroundPortal>
-      <div>Who Am I</div>
+      <ContactsBlock />
     </>
   );
 };

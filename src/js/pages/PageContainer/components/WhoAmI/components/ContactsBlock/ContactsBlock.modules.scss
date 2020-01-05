@@ -1,0 +1,43 @@
+@import "scss/mixins";
+
+.contacts-block {
+  position: absolute;
+  bottom: $global-spacing-l;
+  right: $global-spacing-l;
+  width: 300px;
+  padding: $global-spacing-m;
+  background-color: $global-color-bg-dark;
+
+  &__header {
+    color: $global-color-bg-light;
+    margin-bottom: $global-spacing-m;
+
+    @include p;
+
+    &-link {
+      @include link();
+    }
+  }
+
+  &__links-group {
+    padding: $global-spacing-m 0;
+  }
+
+  &__link {
+    display: block;
+    margin-bottom: $global-spacing-m;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include p;
+    @include link($global-color-bg-light, $global-color-accent);
+
+    &-icon {
+      margin-right: $global-spacing-s;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}

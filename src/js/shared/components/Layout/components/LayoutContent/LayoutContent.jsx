@@ -14,8 +14,6 @@ type SpanRef = {
 };
 
 const useTitle = (langManager: ILangManager, titleRef: SpanRef) => {
-  const titleCur = titleRef.current;
-
   const { nav_type: navType = '' } = useParams();
 
   const entity: NavItem = navigation.entities[navType || ''];
@@ -24,9 +22,10 @@ const useTitle = (langManager: ILangManager, titleRef: SpanRef) => {
 
   const timerRef = React.useRef(null);
 
-  const speedMS = 20;
+  const speedMS = 500 / title.length;
 
   const doWork = React.useCallback(() => {
+    const titleCur = titleRef.current;
     if (timerRef.current === null || !titleCur) {
       return;
     }
@@ -42,17 +41,18 @@ const useTitle = (langManager: ILangManager, titleRef: SpanRef) => {
     titleCur.innerText = title.substr(0, realTitle.length + 1);
 
     timerRef.current = setTimeout(doWork, speedMS);
-  }, [timerRef.current, titleRef]);
+  }, [timerRef.current, title]);
 
   React.useEffect(() => {
     clearTimeout(timerRef.current);
     timerRef.current = null;
 
-    if (titleCur) {
-      titleCur.innerText = '';
-      timerRef.current = setTimeout(doWork, speedMS);
+    if (titleRef.current) {
+      titleRef.current.innerHTML = '';
     }
-  }, [title]);
+
+    timerRef.current = setTimeout(doWork, speedMS);
+  }, [titleRef, titleRef.current, title]);
 };
 
 type Props = {
