@@ -83,7 +83,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "flow && yarn codestyle-fix && yarn style-lint && lint-staged"
+      "pre-commit": "echo KEK && flow && yarn codestyle-fix && yarn style-lint && lint-staged"
     }
   }
 }
