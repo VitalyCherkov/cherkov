@@ -5,18 +5,15 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Redirect, Route, Switch } from 'react-router';
 import Layout from 'components/Layout';
-import navigation from 'shared/config/navigation';
 import routes, { BASE_ROUTE } from 'shared/config/routes';
-import WhoAmI from './pages/WhoAmI';
+import PageContainer from './pages/PageContainer';
 import './App.modules.scss';
 
 const App = observer(() => {
   return (
     <Layout>
       <Switch>
-        {navigation.order.map(item => (
-          <Route key={item} path={routes.PAGE.mask} component={WhoAmI} />
-        ))}
+        <Route path={routes.PAGE.mask} component={PageContainer} />
         <Redirect to={BASE_ROUTE} />
       </Switch>
     </Layout>
